@@ -1,31 +1,22 @@
-package constructor;
+package trial;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
 
 public class parameter {
-	int id; 
-	String name ;
-	parameter(int id, String name)
-	{
-		this.id=id;
-		this.name=name;
-		System.out.println("hi");
-	}
-void ans()
-{
-         System.out.println(id + name);
-}
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		parameter s1 = new parameter(123,"viji");
-		parameter s2 = new parameter(33,"mkj ");
-		s1.ans();
-		s2.ans();
-		
-		
-		
-		
-		
-		
-
-	}
-
+	  WebDriver d;
+  @Test
+  @Parameters({"username","password"})
+  public void f(String u, String p) {
+	  System.setProperty("webdriver.chrome.driver", "C:\\chropath\\chromedriver.exe");
+	   d = new ChromeDriver();
+	  d.get("https://practicetestautomation.com/practice-test-login/");
+	  d.findElement(By.name("username")).sendKeys(u);
+	  d.findElement(By.id("password")).sendKeys(p);
+	  
+	  
+  }
 }
